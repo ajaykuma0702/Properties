@@ -1,0 +1,535 @@
+﻿@model Properties.Models.Vindor_Registration
+
+@{
+    Layout = "~/Views/Shared/HomeMaster.cshtml";
+}
+
+@*<style>
+    .form-control {
+        width: 300px; /* Set the desired width */
+        /* You can adjust the width value as needed */
+    }
+</style>-->*@
+<!-- Custom Theme files -->
+<!--<link href="~/Content/css/style.css" rel="stylesheet" />-->
+<!-- Custom Theme files -->
+<!--//theme-style-->
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+
+
+<div class="container" style="margin-top:6%">
+    <ol class="breadcrumb">
+        <li><a href="index.html">Home</a></li>
+        <li class="active">Account</li>
+    </ol>
+    <div class="registration">
+        <div class="registration_left">
+            <h2>new user? <span> create an account </span></h2>-->
+<!-- [if IE]
+   < link rel='stylesheet' type='text/css' href='ie.css'/>
+[endif] -->
+<!-- [if lt IE 7]>
+   < link rel='stylesheet' type='text/css' href='ie6.css'/>
+<! [endif] -->
+<!--<script>
+
+
+
+
+    (function () {
+
+        // Create input element for testing
+        var inputs = document.createElement('input');
+
+        // Create the supports object
+        var supports = {};
+
+        supports.autofocus = 'autofocus' in inputs;
+        supports.required = 'required' in inputs;
+        supports.placeholder = 'placeholder' in inputs;
+
+        // Fallback for autofocus attribute
+        if (!supports.autofocus) {
+
+        }
+
+        // Fallback for required attribute
+        if (!supports.required) {
+
+        }
+
+        // Fallback for placeholder attribute
+        if (!supports.placeholder) {
+
+        }
+
+        // Change text inside send button on submit
+        var send = document.getElementById('register-submit');
+        if (send) {
+            send.onclick = function () {
+                this.innerHTML = '...Sending';
+            }
+        }
+
+    })();
+    function getDist(obj) {
+
+        document.getElementById("districtdiv").innerHTML = "";
+
+        var category = obj.value;
+        $.post("/Vendor/getdistrictbystate", { state: category }, function (data) {
+
+            console.log(data);
+            var select = document.getElementById("districtdiv");
+            /*var select = document.createElement("select");*/
+            //select.setAttribute("id", "districid");
+            //select.setAttribute("class", "form-select")
+            ;
+            var option = document.createElement("option");
+            option.setAttribute("value", "0");
+            option.innerHTML = "--select--";
+            select.appendChild(option);
+
+            select.setAttribute("onchange", "getcitybyDistrct(this)");
+
+            for (var i = 0; i < data.Binddisplay.length; i++) {
+                var option = document.createElement("option");
+                option.setAttribute("value", data.Binddisplay[i].Id);
+                option.innerHTML = data.Binddisplay[i].District;
+
+                select.appendChild(option);
+            }
+            document.getElementById("districtdiv").appendChild(select);
+        })
+    }
+
+
+    function getcitybyDistrct(obj) {
+
+        document.getElementById("cityddl").innerHTML = "";
+
+        var category = obj.value;
+        $.post("/Vendor/getCitybyDistrict", { district: category }, function (data) {
+
+            console.log(data);
+            var select = document.getElementById("cityddl");
+            /*var select = document.createElement("select");*/
+            //select.setAttribute("id", "districid");
+            //select.setAttribute("class", "form-select");
+            var option = document.createElement("option");
+            option.setAttribute("value", "0");
+            option.innerHTML = "--select--";
+            select.appendChild(option);
+            debugger;
+
+            for (var i = 0; i < data.Binddisplay.length; i++) {
+                var option = document.createElement("option");
+                option.setAttribute("value", data.Binddisplay[i].Id);
+                option.innerHTML = data.Binddisplay[i].CityLocation;
+
+                select.appendChild(option);
+            }
+            document.getElementById("cityddl").appendChild(select);
+        })
+    }
+</script>
+<div class="registration_form">-->
+<!-- Form -->
+<!--@using (Html.BeginForm("Vindor_Registration", "Vendor", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div>
+        <label>
+            <input placeholder="first name:" name="First_Name" type="text" tabindex="1" required autofocus>
+        </label>
+    </div>
+    <div>
+        <label>
+            <input placeholder="last name:" name="Last_Name" type="text" tabindex="2" required autofocus>
+        </label>
+    </div>
+    <div>
+        <label>
+            <input placeholder="email address:" name="Email_Id" type="email" tabindex="3" required>
+        </label>
+    </div>
+    <div>
+        <label>
+            <input placeholder="Mobile:" name="Mobile" type="text" tabindex="4" required>
+        </label>
+    </div>
+    <div class="sky_form1">
+        <ul>
+            <li><label class="radio left"><input type="radio" value="Male" name="Gender" checked=""><i></i>Male</label></li>
+            <li><label class="radio"><input type="radio" value="Female" name="Gender"><i></i>Female</label></li>
+            <div class="clearfix"></div>
+        </ul>
+    </div>
+    <div>
+        <label>
+            <select class="form-select" name="State" onchange="getDist(this)" id="state" aria-label="Default select example">
+                <option class="form-control-a">--Select State--</option>
+                @foreach (var row in ViewBag.showstate.Binddisplay)
+                {
+                    <option value="@row.Id">@row.State</option>
+                }
+            </select>
+        </label>
+    </div>
+
+    <div>
+        <label>
+            <select id="districtdiv" class="form-select" aria-label="Default select example">
+
+                <option value="51">-Select District-</option>
+            </select>
+        </label>
+    </div>
+
+    <div>
+        <label>
+            <select id="cityddl" class="form-select" aria-label="Default select example">
+
+                <option value="1">-Select Area-</option>
+            </select>
+        </label>
+    </div>
+
+
+    <div>
+        <label>
+            <input placeholder="Pin Code" type="text" name="Pincode" tabindex="6" required>
+        </label>
+    </div>
+    <div>
+        <label>
+            <input placeholder="password" type="password" name="Password" tabindex="7" required>
+        </label>
+    </div>
+    <div>
+        <label>
+            <input placeholder="retype password" type="password" name="Re_Password" tabindex="8" required>
+        </label>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+    <div class="sky-form">
+        <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>i agree to mobilya.com &nbsp;<a class="terms" href="#"> terms of service</a> </label>
+    </div>
+}-->
+<!-- /Form -->
+<!--</div>
+        </div>
+        <div class="registration_left">
+            <div class=" login-right">
+                <h2>Do You Have an <span> Account? </span></h2>
+                <p>Dear Customer, you can sell and buy your property quickly by creating an account. If you have already created an account then you can login from here.</p>
+                <a class="acount-btn" href="~/Vendor/Login">Login Here.</a>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>-->
+<!-- end registration -->
+
+
+@{
+    Layout = "~/Views/Shared/HomeMaster.cshtml";
+}
+
+<style>
+    .form-control {
+        width: 300px; /* Set the desired width */
+        /* You can adjust the width value as needed */
+    }
+</style>
+<!-- Custom Theme files -->
+<link href="~/Content/css/style.css" rel="stylesheet" />
+
+<!-- Custom Theme files -->
+<!--//theme-style-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+
+
+<div class="container" style="margin-top:6%">
+    <ol class="breadcrumb">
+        <li><a href="index.html">Home</a></li>
+        <li class="active">Account</li>
+    </ol>
+    <div class="registration">
+        <div class="registration_left">
+            <h2>new user? <span> create an account </span></h2>
+            <!-- [if IE]
+               < link rel='stylesheet' type='text/css' href='ie.css'/>
+            [endif] -->
+            <!-- [if lt IE 7]>
+               < link rel='stylesheet' type='text/css' href='ie6.css'/>
+            <! [endif] -->
+            <script>
+
+
+
+
+                (function () {
+
+                    // Create input element for testing
+                    var inputs = document.createElement('input');
+
+                    // Create the supports object
+                    var supports = {};
+
+                    supports.autofocus = 'autofocus' in inputs;
+                    supports.required = 'required' in inputs;
+                    supports.placeholder = 'placeholder' in inputs;
+
+                    // Fallback for autofocus attribute
+                    if (!supports.autofocus) {
+
+                    }
+
+                    // Fallback for required attribute
+                    if (!supports.required) {
+
+                    }
+
+                    // Fallback for placeholder attribute
+                    if (!supports.placeholder) {
+
+                    }
+
+                    // Change text inside send button on submit
+                    var send = document.getElementById('register-submit');
+                    if (send) {
+                        send.onclick = function () {
+                            this.innerHTML = '...Sending';
+                        }
+                    }
+
+                })();
+                function getDist(obj) {
+
+                    document.getElementById("districtdiv").innerHTML = "";
+
+                    var category = obj.value;
+                    $.post("/Vendor/getdistrictbystate", { state: category }, function (data) {
+
+                        console.log(data);
+                        var select = document.getElementById("districtdiv");
+                        /*var select = document.createElement("select");*/
+                        //select.setAttribute("id", "districid");
+                        //select.setAttribute("class", "form-select");
+                        var option = document.createElement("option");
+                        option.setAttribute("value", "0");
+                    
+                        option.innerHTML = "--select--";
+                        select.appendChild(option);
+                        select.setAttribute("onchange", "getcitybyDistrct(this)");
+
+                        for (var i = 0; i < data.Binddisplay.length; i++) {
+                            var option = document.createElement("option");
+                            option.setAttribute("value", data.Binddisplay[i].Id);
+                            option.innerHTML = data.Binddisplay[i].District;
+
+                            select.appendChild(option);
+                        }
+                        document.getElementById("districtdiv").appendChild(select);
+                    })
+                }
+
+
+                function getcitybyDistrct(obj) {
+                    
+                    document.getElementById("cityddl").innerHTML = "";
+
+                    var category = obj.value;
+                    $.post("/Vendor/getCitybyDistrict", { district: category }, function (data) {
+
+                        console.log(data);
+                        var select = document.getElementById("cityddl");
+                        /*var select = document.createElement("select");*/
+                        //select.setAttribute("id", "districid");
+                        //select.setAttribute("class", "form-select");
+                        var option = document.createElement("option");
+                        option.setAttribute("value", "0");
+                        option.innerHTML = "--select--";
+                      
+                        select.appendChild(option);
+
+
+                        for (var i = 0; i < data.Binddisplay.length; i++) {
+                            var option = document.createElement("option");
+                           
+                            option.setAttribute("value", data.Binddisplay[i].Id);
+                            option.innerHTML = data.Binddisplay[i].CityLocation;
+
+                            select.appendChild(option);
+                        }
+                        document.getElementById("cityddl").appendChild(select);
+                    })
+                }
+            </script>
+            <div class="registration_form">
+                <!-- Form -->
+                @using (Html.BeginForm("Vindor_Registration", "Vendor", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div>
+                        <label>
+                            <input placeholder="first name:" name="First_Name" type="text" tabindex="1" required autofocus>
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input placeholder="last name:" name="Last_Name" type="text" tabindex="2" required autofocus>
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input placeholder="email address:" name="Email_Id" type="email" tabindex="3" required>
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input placeholder="Mobile:" name="Mobile" type="text" tabindex="4" required>
+                        </label>
+                    </div>
+                    <div class="sky_form1">
+                        <ul>
+                            <li><label class="radio left"><input type="radio" value="Male" name="Gender" checked=""><i></i>Male</label></li>
+                            <li><label class="radio"><input type="radio" value="Female" name="Gender"><i></i>Female</label></li>
+                            <div class="clearfix"></div>
+                        </ul>
+                    </div>
+                    <div>
+                        <label>
+                            <select class="form-select" name="State" onchange="getDist(this)" id="state" aria-label="Default select example">
+                                <option class="form-control-a">Select State</option>
+                                @foreach (var row in ViewBag.showstate.Binddisplay)
+                                {
+                                    <option value="@row.Id">@row.State</option>
+                                }
+                            </select>
+                        </label>
+                    </div>
+
+                    <div>
+                        <label>
+                            <select id="districtdiv" class="form-select" aria-label="Default select example" name="District">
+
+                                <option>Select District</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    @*<div>
+                        <label>
+                            <select id="cityddl" class="form-select" aria-label="Default select example" name="city_location">
+
+                                <option value="1">Select Area</option>
+                            </select>
+                        </label>
+                    </div>*@ 
+                    <div>
+                        <label>
+                            <select id="cityddl" class="form-select" aria-label="Default select example" name="CityLocation">
+
+                                <option value="1">Select Area</option>
+                            </select>
+                        </label>
+                    </div>
+
+
+                    @*<div>
+                            <label>
+                                <input placeholder="city location" name="city_location" type="text" tabindex="5" required>
+                            </label>
+                        </div>*@
+                    <div>
+                        <label>
+                            <input placeholder="Pin Code" type="text" name="Pincode" tabindex="6" required>
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input placeholder="password" type="password" name="Password" id="password" tabindex="7" required>
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input placeholder="retype password" type="password" name="Re_Password" id="rePassword" tabindex="8" required>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <p id="message"></p>
+                            <input type="submit" id="submitButton" value="Create" class="btn btn-default" />
+                        </div>
+                    </div>
+                    <div class="sky-form">
+                        <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>i agree to mobilya.com &nbsp;<a class="terms" href="#"> terms of service</a> </label>
+                    </div>
+                }
+                <!-- /Form -->
+            </div>
+        </div>
+        <div class="registration_left">
+            <div class=" login-right">
+                <h2>Do You Have an <span> Account? </span></h2>
+                <p>Dear Customer, you can sell and buy your property quickly by creating an account. If you have already created an account then you can login from here.</p>
+                <a class="acount-btn" href="~/Vendor/Login">Login Here.</a>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+@*  *@
+<!-- end registration -->
+<script>
+    // Get references to the password and retype password fields
+    var passwordField = document.getElementById('password');
+    var rePasswordField = document.getElementById('rePassword');
+
+    // Get references to the message element and submit button
+    var messageElement = document.getElementById('message');
+    var submitButton = document.getElementById('submitButton');
+
+    // Add an input event listener to both password fields
+    passwordField.addEventListener('input', validatePassword);
+    rePasswordField.addEventListener('input', validatePassword);
+
+    // Function to validate whether passwords match
+    function validatePassword() {
+        var password = passwordField.value;
+        var rePassword = rePasswordField.value;
+
+        // Check if passwords match
+        if (password === rePassword) {
+            // Display a success message
+            messageElement.textContent = 'Password match!';
+            messageElement.style.color = 'green';
+            // Enable the submit button
+            submitButton.removeAttribute('disabled');
+        } else {
+            // Display an error message
+
+            messageElement.textContent = 'Password does not match!';
+            messageElement.style.color = "red";
+            // Disable the submit button
+            submitButton.setAttribute('disabled', 'disabled');
+        }
+    }
+
+</script>
+

@@ -1,0 +1,356 @@
+﻿@model Properties.Models.AllDetails
+@{
+    ViewBag.Title = "Property_Upload";
+    Layout = "~/Views/Shared/HomeMaster.cshtml";
+}
+
+
+<h2>Property_Upload</h2>
+<!-- Include CKEditor script -->
+<script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+
+<!-- Include the  ms_Office JavaScript API -->
+<script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- jQuery (necessary JavaScript plugins) -->
+<script type='text/javascript' src="js/jquery-1.11.1.min.js"></script>
+<!-- Custom Theme files -->
+<link href="~/Content/css/style.css" rel="stylesheet" />
+
+<!-- Custom Theme files -->
+<!--//theme-style-->
+<!-- start menu -->
+
+
+
+
+<div class="container" style="margin-top:10%">
+    <ol class="breadcrumb">
+        <li><a href="index.html">Home</a></li>
+        <li class="active">Account</li>
+    </ol>
+    <div class="registration">
+
+        <h2>new user? <span> create an account </span></h2>
+        <!-- [if IE]
+           < link rel='stylesheet' type='text/css' href='ie.css'/>
+        [endif] -->
+        <!-- [if lt IE 7]>
+           < link rel='stylesheet' type='text/css' href='ie6.css'/>
+        <! [endif] -->
+
+              <script>
+            (function () {
+
+                // Create input element for testing
+                var inputs = document.createElement('input');
+
+                // Create the supports object
+                var supports = {};
+
+                supports.autofocus = 'autofocus' in inputs;
+                supports.required = 'required' in inputs;
+                supports.placeholder = 'placeholder' in inputs;
+
+                // Fallback for autofocus attribute
+                if (!supports.autofocus) {
+
+                }
+
+                // Fallback for required attribute
+                if (!supports.required) {
+
+                }
+
+                // Fallback for placeholder attribute
+                if (!supports.placeholder) {
+
+                }
+
+                // Change text inside send button on submit
+                var send = document.getElementById('register-submit');
+                if (send) {
+                    send.onclick = function () {
+                        this.innerHTML = '...Sending';
+                    }
+                }
+
+            })();
+            function getDist(obj) {
+
+                document.getElementById("districtdiv").innerHTML = "";
+
+                var category = obj.value;
+                $.post("/Vendor/getdistrictbystate", { state: category }, function (data) {
+                   
+                    console.log(data);
+                    var select = document.getElementById("districtdiv");
+                    /*var select = document.createElement("select");*/
+                    //select.setAttribute("id", "districid");
+                    //select.setAttribute("class", "form-select");
+                
+                    var option = document.createElement("option");
+                    option.setAttribute("value", "0");
+                    option.innerHTML = "--select--";
+                    select.appendChild(option);
+                    select.setAttribute("onchange", "getcitybyDistrct(this)");
+
+                    for (var i = 0; i < data.Binddisplay.length; i++) {
+                        var option = document.createElement("option");
+                        option.setAttribute("value", data.Binddisplay[i].Id);
+                        option.innerHTML = data.Binddisplay[i].District;
+
+                        select.appendChild(option);
+                    }
+                    document.getElementById("districtdiv").appendChild(select);
+                })
+            }
+
+
+            function getcitybyDistrct(obj) {
+
+                document.getElementById("cityddl").innerHTML = "";
+
+                var category = obj.value;
+                $.post("/Vendor/getCitybyDistrict", { district: category }, function (data) {
+
+                    console.log(data);
+                    var select = document.getElementById("cityddl");
+                    /*var select = document.createElement("select");*/
+                    //select.setAttribute("id", "districid");
+                    //select.setAttribute("class", "form-select");
+                    var option = document.createElement("option");
+                    option.setAttribute("value", "0");
+                    option.innerHTML = "--select--";
+                    select.appendChild(option);
+
+
+                    for (var i = 0; i < data.Binddisplay.length; i++) {
+                        var option = document.createElement("option");
+                        option.setAttribute("value", data.Binddisplay[i].Id);
+                        option.innerHTML = data.Binddisplay[i].CityLocation;
+
+                        select.appendChild(option);
+                    }
+                    document.getElementById("cityddl").appendChild(select);
+                })
+            }
+
+
+            //function senddata() {
+                
+       
+         
+            //    let typeid = $("#Idname").val();
+
+            //    let name = $("#name").val();
+
+            //    let mobno = $("#mobno").val();
+
+            //    let email = $("#email").val();
+             
+            //    let stateid = $("#Stateid").val();
+
+            //    let Districtdiv = $("#districtdiv").val();
+
+            //    let Cityddl = $("#cityddl").val();
+
+            //    let Area = $("#sqft").val();
+
+            //    let price = $("#Price").val();
+
+            //    let prperty_loc = $("#prprty_loc").val();
+
+            //    let descrp = $("#description").val();
+           
+            //    let mainpic = $("#fuMainFile")[0].files[0];
+            //    let mainpic2 = $("#fumultiFile")[0].files[0];
+            //    //let file = $("#fuMainFile").get(0).files;
+            //    //var data = new FormData;
+            //    //data.append("Main_Image", file[0]);
+          
+            //    //debugger;
+            //    //var fileInput = document.getElementById('fuMainFile');
+            //    //var file = fileInput.files[0].name;
+
+            //    //debugger
+
+            //    //var fileInput1 = document.getElementById('fumultiFile');
+            //    //var Other_Images = fileInput1.files[0].name;
+
+
+
+
+
+            //    $.ajax({
+            //        type: "post",
+            //        url: "/Vendor/Property_Upload/",
+               
+            //        data: 'Id=' + typeid + '&Owner_Name=' + name + '&Owner_Mobile_Number=' + mobno + '&Owner_Email=' + email + '&State_Id=' + stateid + '&District_Id=' + Districtdiv + '&City_Id=' + Cityddl + '&Area=' + Area + '&Price=' + price + '&Property_Location=' + prperty_loc + '&Description=' + descrp + '&Main_Image=' + mainpic + '&Other_Images=' + mainpic2,
+
+            //        processData: false,
+            //        contentType: false,
+            //        success: function (response) {
+            //            // Handle success
+            //            console.log(response);
+            //        },
+            //        error: function (error) {
+            //            // Handle error
+            //            console.log(error);
+            //        }
+
+            //        //success: function () {
+
+            //        //    alert(data)
+            //        //},
+            //        //error: function () {
+
+            //        //    alert('not inserted data')
+            //        //}
+
+            //    })
+
+
+
+            //}
+
+        </script>
+
+        <div class="registration_form">
+            <!-- Form -->
+            @using (Html.BeginForm("Property_Upload", "Vendor", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+
+            {
+                @Html.AntiForgeryToken()
+                <div class="registration_left">
+                    <div>
+                        @if (ViewBag.UserData != null)
+                        {
+                            <select name="Type_Id" class="form-select" id="Idname" >
+                                <option>--Select--</option>
+                                @foreach (var item in ViewBag.UserData)
+                                {
+                                    <option value="@item.Id">@item.Type_Name</option>
+                                }
+                            </select>
+                        }
+                    </div>
+
+                    <div>
+                        <label>
+                            <input id="name"name="Owner_Name" placeholder="Owner_Name:" type="text" tabindex="1" required autofocus>
+                        </label>
+                    </div>
+
+                    <div>
+                        <label>
+                            <input id="mobno"name="Owner_Mobile_Number" placeholder="Owner_Mobile_Number:" type="tel" tabindex="3" required>
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input id="email"name="Owner_Email" placeholder="email address:" type="email" tabindex="3" required>
+                        </label>
+                    </div>
+
+                    <div>
+                        <label>
+                            <select class="form-select" name="State_Id" onchange="getDist(this)" id="Stateid" aria-label="Default select example">
+                                <option class="form-control-a">--Select State--</option>
+                                @foreach (var row in ViewBag.showstate.Binddisplay)
+                                {
+                                    <option value="@row.Id">@row.State</option>
+                                }
+                            </select>
+                        </label>
+                    </div>
+
+                    <div>
+                        <label>
+                            <select id="districtdiv" name="District_Id" class="form-select" aria-label="Default select example">
+
+                                <option >-Select District-</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div>
+                        <label>
+                            <select id="cityddl" name="City_Id" class="form-select" aria-label="Default select example">
+
+                                <option>-Select Area-</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div>
+                        <label>
+                            <input name="Area" id="sqft" placeholder="Area sq.ft." type="text" tabindex="3" required>
+
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input name="Price" id="Price" placeholder="Price" type="text" tabindex="3" required>
+
+                        </label>
+                    </div>
+
+                    <div>
+                        <label>
+                            <input name="Property_Location" id="prprty_loc" placeholder="Location" type="text" tabindex="3" required>
+
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <textarea name="Description" placeholder="Description" tabindex="3" required id="description"></textarea>
+
+                        </label>
+                    </div>
+                </div>
+
+
+                <div class="registration_left">
+
+                    <div class="card-box">
+                        <h5 class="text-uppercase mt-0 mb-3 bg-light p-2">Product Images</h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="product-category">Upload Main Image</label>
+                                <input type="file" class="form-control" id="fuMainFile" name="Main_Image" />
+                            </div>
+                            @*<div class="col-md-6">
+                                <label for="product-category">Image Preview</label>
+                                <img src="../img/noimageicon.png" id="imgMainImage"  style="width:65%" class="img-responsive img-thumbnail" />
+                            </div>*@
+                        </div><hr />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="product-category">Upload more Images (max. 4 Images can be upload)</label>
+                                <input type="file" name="Other_Images" class="form-control" id="fumultiFile" multiple max="4" />
+                            </div>
+                        </div>
+                    </div> <!-- end col-->
+                    <div>
+                        <input type="submit" value="Sumbit Data" id="register-submit">
+                        
+                    </div>
+                    
+                </div>
+
+            }
+
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+</div>
+
+<!-- end registration -->
+

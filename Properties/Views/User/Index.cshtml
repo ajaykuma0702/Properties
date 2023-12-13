@@ -1,0 +1,677 @@
+﻿@model Properties.Models.LoginClass
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/HomeMaster.cshtml";
+}
+<link href="~/Content/css/style.css" rel="stylesheet" />
+
+<!-- ======= Intro Section ======= -->
+<div class="container-fluid">
+    <div class="intro intro-carousel swiper position-relative">
+
+
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url('@Url.Content(
+"~/Content/assets/img/slide-1.jpg")');">
+
+                <div class="overlay overlay-a"></div>
+                <div class="intro-content display-table">
+                    <div class="table-cell">
+                        <div class="container">
+                            <div class="row">
+                                <div class="intro-body">
+                                    <p class="intro-title-top">
+                                        Doraltygfughj, Florida
+                                        <br> 78345
+                                    </p>
+                                    <h1 class="intro-title mb-4 ">
+                                        <span class="color-b">204 </span> Mount
+                                        <br> Olive Road Two
+                                    </h1>
+                                    <p class="intro-subtitle intro-price">
+                                        <a href="#"><span class="price-a">rent | ₹ 12.000</span></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url('@Url.Content("~/Content/assets/img/slide-2.jpg")');">
+                <div class="overlay overlay-a"></div>
+                <div class="intro-content display-table">
+                    <div class="table-cell">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="intro-body">
+                                        <p class="intro-title-top">
+                                            Doral, Florida
+                                            <br> 78345
+                                        </p>
+                                        <h1 class="intro-title mb-4">
+                                            <span class="color-b">204 </span> Rino
+                                            <br> Venda Road Five
+                                        </h1>
+                                        <p class="intro-subtitle intro-price">
+                                            <a href="#"><span class="price-a">rent | ₹ 12.000</span></a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url('@Url.Content("~/Content/assets/img/slide-3.jpg")')">
+
+
+                <div class="overlay overlay-a"></div>
+                <div class="intro-content display-table">
+                    <div class="table-cell">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="intro-body">
+                                        <p class="intro-title-top">
+                                            Doral, Florida
+                                            <br> 78345
+                                        </p>
+                                        <h1 class="intro-title mb-4">
+                                            <span class="color-b">204 </span> Alira
+                                            <br> Roan Road One
+                                        </h1>
+                                        <p class="intro-subtitle intro-price">
+                                            <a href="#"><span class="price-a">rent | ₹ 12.000</span></a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+
+<!-- End Intro Section -->
+
+<div class="container" style="margin-top:5%">
+    <div class="row">
+        <div class="col-sm-2">
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Proparty_type</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+        <div class="col-sm-2">
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Open state</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+        <div class="col-sm-2">
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Open Distic</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+        <div class="col-sm-2">
+            <select class="form-select" aria-label="Default select example">
+                <option selected>city</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+        <div class="col-sm-2">
+
+        </div>      <div class="col-sm-2">
+            <button type="button" class="btn btn-primary">Search</button>
+        </div>
+    </div>
+</div>
+
+<main id="main">
+
+
+    <!-- ======= Latest Properties Section ======= -->
+    <section class="section-property section-t8">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title-wrap d-flex justify-content-between">
+                        <div class="title-box">
+                            <h2 class="title-a">Latest Properties</h2>
+                        </div>
+                        <div class="title-link">
+                            <a href="~/User/BuyProperty">
+                                All Property
+                                <span class="bi bi-chevron-right"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="property-carousel" class="swiper">
+                <div class="swiper-wrapper">
+
+                    <div class="carousel-item-b swiper-slide">
+                        <div class="card-box-a card-shadow" id="mybtn" >
+                            <div class="img-box-a">
+                                <img src="~/Content/assets/img/property-6.jpg" alt="" class="img-a img-fluid">
+                            </div>
+                            <div class="card-overlay">
+                                <div class="card-overlay-a-content">
+                                    <div class="card-header-a">
+                                        <h2 class="card-title-a">
+                                            <a href="/Vender/Vindor_Registration">
+                                                206 Mount
+                                                <br /> Olive Road Two
+                                            </a>
+                                        </h2>
+                                    </div>
+                                    <div class="card-body-a">
+                                        <div class="price-box d-flex">
+                                            <span class="price-a">rent | ₹ 12.000</span>
+                                        </div>
+                                        @*<button id="myBtn" class="link-a text-black-50">
+                                            Click here to view
+
+                                            <span class="bi bi-chevron-right"></span>
+                                        </button>*@
+                                        <label id="myBtn" class="link-a" >
+                                            Click here to view
+                                            <span class="bi bi-chevron-right"></span>
+                                        </label>
+                                    </div>
+                                    <div class="card-footer-a">
+                                        <ul class="card-info d-flex justify-content-around">
+                                            <li>
+                                                <h4 class="card-info-title">Area</h4>
+                                                <span>
+                                                    340m
+                                                    <sup>2</sup>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Beds</h4>
+                                                <span>2</span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Baths</h4>
+                                                <span>4</span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Garages</h4>
+                                                <span>1</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End carousel item -->
+
+                    <div class="carousel-item-b swiper-slide">
+                        <div class="card-box-a card-shadow">
+                            <div class="img-box-a">
+                                <img src="~/Content/assets/img/property-3.jpg" alt="" class="img-a img-fluid">
+                            </div>
+                            <div class="card-overlay">
+                                <div class="card-overlay-a-content">
+                                    <div class="card-header-a">
+                                        <h2 class="card-title-a">
+                                            <a href="/Vender/Vindor_Registration">
+                                                157 West
+                                                <br /> Central Park
+                                            </a>
+                                        </h2>
+                                    </div>
+                                    <div class="card-body-a">
+                                        <div class="price-box d-flex">
+                                            <span class="price-a">rent | ₹ 12.000</span>
+                                        </div>
+                                        <a href="/Vendor/Login" class="link-a">
+                                            Click here to view
+                                            <span class="bi bi-chevron-right"></span>
+                                        </a>
+                                    </div>
+                                    <div class="card-footer-a">
+                                        <ul class="card-info d-flex justify-content-around">
+                                            <li>
+                                                <h4 class="card-info-title">Area</h4>
+                                                <span>
+                                                    340m
+                                                    <sup>2</sup>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Beds</h4>
+                                                <span>2</span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Baths</h4>
+                                                <span>4</span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Garages</h4>
+                                                <span>1</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End carousel item -->
+
+                    <div class="carousel-item-b swiper-slide">
+                        <div class="card-box-a card-shadow">
+                            <div class="img-box-a">
+                                <img src="~/Content/assets/img/property-7.jpg" alt="" class="img-a img-fluid">
+                            </div>
+                            <div class="card-overlay">
+                                <div class="card-overlay-a-content">
+                                    <div class="card-header-a">
+                                        <h2 class="card-title-a">
+                                            <a href="/Vendor/Login">
+
+
+                                                245 Azabu
+                                                <br /> Nishi Park let
+                                            </a>
+                                        </h2>
+                                    </div>
+                                    <div class="card-body-a">
+                                        <div class="price-box d-flex">
+                                            <span class="price-a">rent | ₹ 12.000</span>
+                                        </div>
+                                        <a href="/Vendor/Login" class="link-a">
+                                            Click here to view
+                                            <span class="bi bi-chevron-right"></span>
+                                        </a>
+                                    </div>
+                                    <div class="card-footer-a">
+                                        <ul class="card-info d-flex justify-content-around">
+                                            <li>
+                                                <h4 class="card-info-title">Area</h4>
+                                                <span>
+                                                    340m
+                                                    <sup>2</sup>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Beds</h4>
+                                                <span>2</span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Baths</h4>
+                                                <span>4</span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Garages</h4>
+                                                <span>1</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End carousel item -->
+
+                    <div class="carousel-item-b swiper-slide">
+                        <div class="card-box-a card-shadow">
+                            <div class="img-box-a">
+                                <img src="~/Content/assets/img/property-10.jpg" alt="" class="img-a img-fluid">
+                            </div>
+                            <div class="card-overlay">
+                                <div class="card-overlay-a-content">
+                                    <div class="card-header-a">
+                                        <h2 class="card-title-a">
+                                            <a href="property-single.html">
+                                                204 Montal
+                                                <br /> South Bela Two
+                                            </a>
+                                        </h2>
+                                    </div>
+                                    <div class="card-body-a">
+                                        <div class="price-box d-flex">
+                                            <span class="price-a">rent | ₹ 12.000</span>
+                                        </div>
+                                        <a href="/Vendor/Login" class="link-a">
+                                            Click here to view
+                                            <span class="bi bi-chevron-right"></span>
+                                        </a>
+                                    </div>
+                                    <div class="card-footer-a">
+                                        <ul class="card-info d-flex justify-content-around">
+                                            <li>
+                                                <h4 class="card-info-title">Area</h4>
+                                                <span>
+                                                    340m
+                                                    <sup>2</sup>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Beds</h4>
+                                                <span>2</span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Baths</h4>
+                                                <span>4</span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Garages</h4>
+                                                <span>1</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End carousel item -->
+                </div>
+            </div>
+            <div class="propery-carousel-pagination carousel-pagination"></div>
+
+        </div>
+    </section><!-- End Latest Properties Section -->
+    <section class="section-testimonials section-t8 nav-arrow-a">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title-wrap d-flex justify-content-between">
+                        <div class="title-box">
+                            <h2 class="title-a">Feedback</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="testimonial-carousel" class="swiper">
+                <div class="swiper-wrapper">
+
+                    <div class="carousel-item-a swiper-slide">
+                        <div class="testimonials-box">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6">
+                                    @*<div class="testimonial-img">
+                                            <img src="~/Content/assets/img/testimonial-1.jpg" alt="" class="img-fluid">
+                                        </div>*@
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="testimonial-ico">
+                                        <i class="bi bi-chat-quote-fill"></i>
+                                    </div>
+                                    <div class="testimonials-content">
+                                        <p class="testimonial-text">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, cupiditate ea nam praesentium
+                                            debitis hic ber quibusdam
+                                            voluptatibus officia expedita corpori.
+                                        </p>
+                                    </div>
+                                    <div class="testimonial-author-box">
+                                        <img src="assets/img/mini-testimonial-1.jpg" alt="" class="testimonial-avatar">
+                                        <h5 class="testimonial-author">Albert & Erika</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End carousel item -->
+
+                    <div class="carousel-item-a swiper-slide">
+                        <div class="testimonials-box">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6">
+                                    @*<div class="testimonial-img">
+                                            <img src="~/Content/assets/img/testimonial-2.jpg" alt="" class="img-fluid">
+                                        </div>*@
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="testimonial-ico">
+                                        <i class="bi bi-chat-quote-fill"></i>
+                                    </div>
+                                    <div class="testimonials-content">
+                                        <p class="testimonial-text">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, cupiditate ea nam praesentium
+                                            debitis hic ber quibusdam
+                                            voluptatibus officia expedita corpori.
+                                        </p>
+                                    </div>
+                                    <div class="testimonial-author-box">
+                                        <img src="assets/img/mini-testimonial-2.jpg" alt="" class="testimonial-avatar">
+                                        <h5 class="testimonial-author">Pablo & Emma</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End carousel item -->
+
+                </div>
+            </div>
+            <div class="testimonial-carousel-pagination carousel-pagination"></div>
+
+        </div>
+    </section><!-- End Testimonials Section -->
+
+</main>
+<div id="myModal" class="modal" style="backdrop-filter:blur(10px);">
+    <div class="modal-content container" style="margin-top:100px;">
+        <span class="close">&times;</span>
+
+        <div class="row">
+
+            <script type='text/javascript' src="js/jquery-1.11.1.min.js"></script>
+            <!-- Custom Theme files -->
+            <link href="~/Content/css/style.css" rel="stylesheet" />
+            @*<script>
+                    (function () {
+
+                        // Create input element for testing
+                        var inputs = document.createElement('input');
+
+                        // Create the supports object
+                        var supports = {};
+
+                        supports.autofocus = 'autofocus' in inputs;
+                        supports.required = 'required' in inputs;
+                        supports.placeholder = 'placeholder' in inputs;
+
+                        // Fallback for autofocus attribute
+                        if (!supports.autofocus) {
+
+                        }
+
+                        // Fallback for required attribute
+                        if (!supports.required) {
+
+                        }
+
+                        // Fallback for placeholder attribute
+                        if (!supports.placeholder) {
+
+                        }
+
+                        // Change text inside send button on submit
+                        var send = document.getElementById('register-submit');
+                        if (send) {
+                            send.onclick = function () {
+                                this.innerHTML = '...Sending';
+                            }
+                        }
+
+                    })();
+                </script>*@
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li><a href="/User/Index">Home </a></li>
+                    <li class="active"> Login</li>
+                </ol>
+                <div class="registration">
+                    <div class="registration_left ">
+                        <div class="login-right">
+                            <h2><span>Login Here.</span></h2>
+                            <p>
+                                Welcome, please enter the folling to continue.
+                                If you have previously Login with us, <span>click here.</span>
+                            </p>
+                        </div>
+                        <div class="registration_form">
+
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                <div>
+                                    <label>
+                                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { tabindex = "3", placeholder = "email address:", type = "email" } })
+                                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <label>
+                                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { placeholder = "password", type = "password", tabindex = "4" } })
+                                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                    </label>
+                                </div>
+
+
+                                <div>
+                                    <input type="submit" value="Login" id="register-submit">
+                                </div>
+
+                                <a class="login-right" href="#"><p class="login-right">Forgot Password ?</p></a>
+
+                                <h1>@Html.ViewData["Message"]</h1>
+
+                            }
+                        </div>
+                    </div>
+                    <div class="registration_left">
+                        <div class="login-right">
+                            <h2>NEW REGISTRATION</h2>
+                            <p>Dear Customer, you can sell and buy your property quickly by creating an account. If you have already created an account then you can login from here.</p>
+                            <a class="acount-btn" href="~/Vendor/Vindor_Registration">Create an Account</a>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+
+            <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+            <script src="~/Scripts/jquery.validate.min.js"></script>
+            <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+            <!-- Modal content -->
+            @*<div class="modal-content container">
+                    <span class="close">&times;</span>
+
+                    <div class="row">
+                        @using (Html.BeginForm("Index", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter your Name" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.UserMobile, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.UserMobile, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter your Mobile" } })
+                                    @Html.ValidationMessageFor(model => model.UserMobile, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter your Email" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Upload Picture</label>
+                                <div class="col-md-10">
+                                    <input type="file" name="Profile_Pic" value="" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <br />
+                                    <input type="submit" value="Create" class="btn btn-outline-info form-control" />
+                                    <br />
+                                    <br />
+                                </div>
+                            </div>
+
+                        }
+                    </div>
+                </div>*@
+        </div>
+        </div>
+    </div>
+
+
+        <script>
+            // Get the modal
+            var modal = document.getElementById("myModal");
+
+            // Get the button that opens the modal
+            var btn = document.getElementById("myBtn");
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks the button, open the modal
+            btn.onclick = function () {
+                modal.style.display = "block";
+            }
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        </script>
+        <!-- End #main -->
